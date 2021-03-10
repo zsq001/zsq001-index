@@ -1,10 +1,14 @@
 <template>
 	<transition name="fade" appear>
 	<div>
-	<header class="header">
+	<header class="lleft">
 		<div class="mdui-float-left">
-			<ul class="mdui-list">
-				<block-list v-for="list in lists" :key="list.id" :text="list.name" :chosen="checkCurrentTab(list.id)" @click="changeTab(list.id)"></block-list>
+			<ul class="mdui-list" style="max-width: 360px;">
+				<li class="mdui-list-item-active mdui-list-item mdui-ripple">
+					<div class="mdui-list-item-avatar"><img src="https://i0.hdslb.com/bfs/face/1ae78cb72f0f8de7a39757d7d24d489143e0782c.jpg"/></div>
+					<div class="mdui-list-item-content">zsq001</div>
+				</li>
+				<block-list v-for="list in lists" :key="list.id" :text="list.name" :chosen="checkCurrentTab(list.id)" :icon="list.icon" @click="changeTab(list.id)"></block-list>
 			</ul>
 		</div>
 	</header>
@@ -25,7 +29,7 @@
 	</transition>
 </template>
 <script>
-//import AboutMe from "./components/about-me.vue"
+import AboutMe from "./components/about-me.vue"
 import LinkList from "./components/link-item.vue"
 import FriendLinks from "./data/friend-links.json"
 import BlockList from "./components/block-list.vue"
@@ -33,7 +37,7 @@ import BlockList from "./components/block-list.vue"
 export default{
 	name: 'App',
 	components:{
-		//Aboutme,
+		AboutMe,
 		LinkList,
 		BlockList
 	},
@@ -41,9 +45,9 @@ export default{
 		return {
 			current_tab: 0,
 			lists: [
-				//{
-			//		id:"0", name:"About me", component:"AboutMe", icon:"account_circle",
-			//	},
+				{
+					id:"0", name:"About me", component:"AboutMe", icon:"account_circle",
+				},
 				{
 					id:"1", name:"My service", component:"link-list", icon:"widgets",
 					data:{
@@ -93,3 +97,11 @@ export default{
 	}
 }
 </script>
+<style scoped>
+.lleft
+{
+	padding: 15px;
+	width: 100%;
+	top: 2vh;
+}
+</style>
