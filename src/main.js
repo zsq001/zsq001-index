@@ -1,11 +1,11 @@
 import Vue from "vue"
-import app from "@/App.vue"
+import App from "@/App.vue"
 import "@/assets/css/mdui.css"
 import "@/assets/js/mdui.js"
 
 Vue.config.productionTip = false
 
 new Vue ({
-	hender :h => h(app)
+	render :h => h(App),
 }).$mount("#app")
 

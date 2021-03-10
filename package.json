@@ -1,10 +1,36 @@
 {
+  "name": "zsq001-index",
+  "version": "1.0.0",
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
+  },
   "dependencies": {
+    "@vue/cli-plugin-babel": "^4.5.11",
+    "@vue/cli-plugin-eslint": "^4.5.11",
+    "@vue/cli-service": "^4.5.11",
     "babel-eslint": "^10.1.0",
-    "core-js": "^3.9.1",
-    "eslint-plugin-vue": "^7.7.0",
-    "mdui": "^1.0.2",
-    "vue": "^2.6.12",
-    "vue-template-compiler": "^2.6.12"
+    "eslint": "^6.7.2",
+    "eslint-plugin-vue": "^6.2.2",
+	"vue-template-compiler": "^2.6.12"
+  },
+  "devDependencies":{
+	"vue": "^2.6.12",
+	"core-js": "^3.9.1"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "babel-eslint"
+    },
+    "rules": {}
   }
 }

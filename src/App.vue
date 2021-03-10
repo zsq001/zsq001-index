@@ -3,57 +3,49 @@
 	<div>
 	<header class="header">
 		<div class="mdui-float-left">
-			<!--<ul class="mdui-list">
-				<li class="mdui-list-item mdui-ripple">
-					<i class="mdui-list-item-icon mdui-icon material-icons">account_circle</i>
-					<div class="mdui-list-item-content">About me</div>
-				<li>
-				<li class="mdui-list-item mdui-ripple">
-					<i class="mdui-list-item-icon mdui-icon material-icons">widgets</i>
-					<div class="mdui-list-item-content">My service</div>
-				<li>
-				<li class="mdui-list-item mdui-ripple">
-					<i class="mdui-list-item-icon mdui-icon material-icons">call</i>
-					<div class="mdui-list-item-content">Contact me</div>
-				<li>
-				<li class="mdui-list-item mdui-ripple">
-					<i class="mdui-list-item-icon mdui-icon material-icons">insert_link</i>
-					<div class="mdui-list-item-content">Friend link</div>
-				<li>
-			</ul>-->
 			<ul class="mdui-list">
-				<block-list v-for="list in lists" :key="list.id", :text="list.name" :chosen="checkCurrentId(list.id)" @click="changeTab(list.id)"></block-list>
+				<block-list v-for="list in lists" :key="list.id" :text="list.name" :chosen="checkCurrentTab(list.id)" @click="changeTab(list.id)"></block-list>
 			</ul>
 		</div>
 	</header>
 
 	<main>
-		<div class="mdui-container" id="app">
-			<header>
+		<header class="card-header">
+			
+		</header>
+		<div class="mdui-card card mdui-container" id="app">
+			<transition name="fade" mode="out-in" appear>
+			<keep-alive>
+				<component :is="currentTabComponents" :key="current_tab" v-bind="currentTabLink"></component>
+			</keep-alive>
+			</transition>
 		</div>
+	</main>
 	</div>
 	</transition>
 </template>
 <script>
-import AboutMe from "./components/about-me.vue"
+//import AboutMe from "./components/about-me.vue"
 import LinkList from "./components/link-item.vue"
 import FriendLinks from "./data/friend-links.json"
+import BlockList from "./components/block-list.vue"
 
 export default{
-	name: App,
+	name: 'App',
 	components:{
-		Aboutme,
-		LinkList
+		//Aboutme,
+		LinkList,
+		BlockList
 	},
 	data: function(){
 		return {
 			current_tab: 0,
 			lists: [
+				//{
+			//		id:"0", name:"About me", component:"AboutMe", icon:"account_circle",
+			//	},
 				{
-					id:"0", name:"About me", component:"AboutMe", icon:account_circle,
-				},
-				{
-					id:"1", name:"My service", component:"link-list", icon:widgets,
+					id:"1", name:"My service", component:"link-list", icon:"widgets",
 					data:{
 						//name theContent img_src url 
 						links:[
@@ -64,32 +56,39 @@ export default{
 					}
 				},
 				{
-					id:"2", name:"Contact me", component:"link-list", icon:call,
+					id:"2", name:"Contact me", component:"link-list", icon:"call",
 					data:{ links:[//github qq email bili telegram gpg
-						{"url":"mailto:zsq1750819212@gmail.com", theContent:"zsq1750819212@gmail.com", title: E-mail},
+						{"url":"mailto:zsq1750819212@gmail.com", theContent:"zsq1750819212@gmail.com", title: "E-mail"},
 						{"url":"https://github.com/zsq001", theContent:"@zsq001", title: "My github"},
-						{"url":"https://t.me/zsq001", theContent:"@zsq001", title: "My telegram"}
+						{"url":"https://t.me/zsq001", theContent:"@zsq001", title: "My telegram"},
 						{"url":"https://space.bilibili.com/381720186", theContent:"@zsq_001", title: "My bili space"},
 						{"url":"https://github.com/zsq001.gpg", theContent:"9D26 2ED8 7064 97A4", title:"GunPG"}
 					]
 					}
 				},
 				{
-					id:"3", name:"Friend Link", component:"link-list", icon:insert_link,
+					id:"3", name:"Friend Link", component:"link-list", icon:"insert_link",
 					data:{
 						links:FriendLinks
 					}
 				}
 			]
-			method:{
-				changeTab(id){
-					this.current_tab = id;
-				}
-				checkCurrentTab(id){
-					return this.current_tab === id;
-				}	
-
-			}
+		}
+	},
+	methods: {
+		changeTab(id){
+			this.current_tab = id;
+		},
+		checkCurrentTab(id){
+			return this.current_tab === id;
+		}	
+	},
+	computed: {
+		currentTabLink: function(){
+			return this.lists[this.current_tab].data;
+		},
+		currentTabComponents: function(){
+			return this.lists[this.current_tab].component;
 		}
 	}
 }

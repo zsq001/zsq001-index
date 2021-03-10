@@ -12,10 +12,10 @@ export default{
 		"icon": {
 			type: String,
 			default: ""
-		}
+		},
 		"chosen": {
 			type: Boolean,
-			default: ""
+			default: false
 		}
 	}
 }
