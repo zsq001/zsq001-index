@@ -1,10 +1,10 @@
 <template>
-	<div>
+	<div class="mdui-col">
 	<li v-if="chosen" class="mdui-list-item-active mdui-list-item mdui-ripple">
 		<i class="mdui-list-item-icon mdui-icon material-icons">{{ icon }}</i>
 		<div class="mdui-list-item-content">{{ text }}</div>
 	</li>
-	<li v-else class="mdui-list-item mdui-ripple">
+	<li v-else class="mdui-list-item mdui-ripple" @click="$emit('click')">
 		<i class="mdui-list-item-icon mdui-icon material-icons">{{ icon }}</i>
 		<div class="mdui-list-item-content">{{ text }}</div>
 	</li>

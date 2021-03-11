@@ -2,7 +2,7 @@
 	<transition name="fade" appear>
 	<div>
 	<header class="lleft">
-		<div class="mdui-float-left">
+		<div class="mdui-float-left" id="app">
 			<ul class="mdui-list" style="max-width: 360px;">
 				<li class="mdui-list-item-active mdui-list-item mdui-ripple">
 					<div class="mdui-list-item-avatar"><img src="https://i0.hdslb.com/bfs/face/1ae78cb72f0f8de7a39757d7d24d489143e0782c.jpg"/></div>
@@ -12,11 +12,7 @@
 			</ul>
 		</div>
 	</header>
-
 	<main>
-		<header class="card-header">
-			
-		</header>
 		<div class="mdui-card card mdui-container" id="app">
 			<transition name="fade" mode="out-in" appear>
 			<keep-alive>
@@ -30,7 +26,7 @@
 </template>
 <script>
 import AboutMe from "./components/about-me.vue"
-import LinkList from "./components/link-item.vue"
+import LinkList from "./components/link-list.vue"
 import FriendLinks from "./data/friend-links.json"
 import BlockList from "./components/block-list.vue"
 
@@ -43,7 +39,7 @@ export default{
 	},
 	data: function(){
 		return {
-			current_tab: 0,
+			current_tab: "0",
 			lists: [
 				{
 					id:"0", name:"About me", component:"AboutMe", icon:"account_circle",
@@ -84,7 +80,7 @@ export default{
 			this.current_tab = id;
 		},
 		checkCurrentTab(id){
-			return this.current_tab === id;
+			return this.current_tab == id;
 		}	
 	},
 	computed: {
