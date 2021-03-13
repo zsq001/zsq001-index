@@ -1,7 +1,11 @@
 <template>
 	<div class="mdui-typo">
-		<div class="mdui-center">
-			<p>test text</p>
+		<div class="mdui-center mdui-typo-title about-card">
+			<p>高三鸽子</p>
+      <p>一只furry</p>
+      <p>各种意义上的萌新</p>
+      <p>喜欢mc等沙盒游戏</p>
+      <p>不太喜欢每句话带个emoji</p>
 		</div>
 	</div>
 </template>
@@ -9,5 +13,9 @@
 .mdui-center
 {
 	text-align:center;
+}
+.about-card {
+  letter-spacing: 4px;
+  font-size: 1.1em;
 }
 </style>
