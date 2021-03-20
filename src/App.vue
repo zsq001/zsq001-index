@@ -5,7 +5,7 @@
 		<div class="mdui-float-left" id="app">
 			<ul class="mdui-list">
 				<li class=" mdui-list-item mdui-ripple">
-					<div class="mdui-list-item-avatar"><img src="https://furry-img-1300406936.file.myqcloud.com/zsq001/e0cdb0313081948.jpg"/></div>
+					<div class="mdui-list-item-avatar"><img src="https://furry-img-1300406936.file.myqcloud.com/zsq001/bab4b0320095935.jpg"/></div>
 					<div class="mdui-list-item-content">zsq001</div>
 				</li>
 				<block-list v-for="list in lists" :key="list.id" :text="list.name" :chosen="checkCurrentTab(list.id)" :icon="list.icon" @click="changeTab(list.id)"></block-list>
