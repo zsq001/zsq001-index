@@ -12,8 +12,8 @@
 			</ul>
 		</div>
 	<main>
-    <div class="mdui-col-md- mdui-col-offset-md-2" >
-		<div class="mdui-card card" id="app">
+    <div class="mdui-col-offset-md-2 mdui-col-offset-sm-" >
+			<div class="mdui-card card mdui-center" id="app">
 			<transition name="fade" mode="out-in" appear>
 			<keep-alive>
 				<component :is="currentTabComponents" :key="current_tab" v-bind="currentTabLink"></component>
