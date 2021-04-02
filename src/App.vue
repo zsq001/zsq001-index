@@ -1,7 +1,7 @@
 <template>
 	<transition name="fade" appear>
 	<div class="mdui-container">
-    		<div class="mdui-row">
+        <div class="mdui-row">
 			<div class="mdui-float-left" id="app">
 				<ul class="mdui-list">
 					<li class=" mdui-list-item mdui-ripple">
@@ -12,14 +12,14 @@
 				</ul>
 			</div>
 	<main>
-    		<div class="mdui-col-offset-md-2 mdui-col-offset-sm-">
+        <div class="mdui-col-offset-md-2 mdui-col-offset-sm-">
 			<div class="mdui-card card mdui-center" id="app">
 				<transition name="fade" mode="out-in" appear>
 					<keep-alive>
 						<component :is="currentTabComponents" :key="current_tab" v-bind="currentTabLink"></component>
 					</keep-alive>
 				</transition>
-      			</div>
+        </div>
 		</div>
 	</main>
 	</div>
