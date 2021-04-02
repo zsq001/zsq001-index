@@ -1,25 +1,25 @@
 <template>
 	<transition name="fade" appear>
 	<div class="mdui-container">
-    <div class="mdui-row">
-		<div class="mdui-float-left" id="app">
-			<ul class="mdui-list">
-				<li class=" mdui-list-item mdui-ripple">
-					<div class="mdui-list-item-avatar"><img src="https://furry-img-1300406936.file.myqcloud.com/zsq001/bab4b0320095935.jpg"/></div>
-					<div class="mdui-list-item-content">zsq001</div>
-				</li>
-				<block-list v-for="list in lists" :key="list.id" :text="list.name" :chosen="checkCurrentTab(list.id)" :icon="list.icon" @click="changeTab(list.id)"></block-list>
-			</ul>
-		</div>
+    		<div class="mdui-row">
+			<div class="mdui-float-left" id="app">
+				<ul class="mdui-list">
+					<li class=" mdui-list-item mdui-ripple">
+						<div class="mdui-list-item-avatar"><img src="https://furry-img-1300406936.file.myqcloud.com/zsq001/bab4b0320095935.jpg"/></div>
+						<div class="mdui-list-item-content">zsq001</div>
+					</li>
+					<block-list v-for="list in lists" :key="list.id" :text="list.name" :chosen="checkCurrentTab(list.id)" :icon="list.icon" @click="changeTab(list.id)"></block-list>
+				</ul>
+			</div>
 	<main>
-    <div class="mdui-col-offset-md-2 mdui-col-offset-sm-" >
+    		<div class="mdui-col-offset-md-2 mdui-col-offset-sm-">
 			<div class="mdui-card card mdui-center" id="app">
-			<transition name="fade" mode="out-in" appear>
-			<keep-alive>
-				<component :is="currentTabComponents" :key="current_tab" v-bind="currentTabLink"></component>
-			</keep-alive>
-			</transition>
-      </div>
+				<transition name="fade" mode="out-in" appear>
+					<keep-alive>
+						<component :is="currentTabComponents" :key="current_tab" v-bind="currentTabLink"></component>
+					</keep-alive>
+				</transition>
+      			</div>
 		</div>
 	</main>
 	</div>
