@@ -63,7 +63,7 @@ export default{
 						{"url":"mailto:zsq1750819212@gmail.com", theContent:"zsq1750819212@gmail.com", title: "E-mail"},
 						{"url":"https://github.com/zsq001", theContent:"@zsq001", title: "My github"},
 						{"url":"https://t.me/zsq001", theContent:"@zsq001", title: "My telegram"},
-						{"url":"https://space.bilibili.com/381720186", theContent:"@zsq_001", title: "My bili space"},
+						{"url":"https://space.bilibili.com/381720186", theContent:"@灰狐zsq001", title: "My bili space"},
 						{"url":"https://github.com/zsq001.gpg", theContent:"9D26 2ED8 7064 97A4", title:"GunPG"}
 					]
 					}
