@@ -29,8 +29,10 @@
 <script>
 import AboutMe from "./components/about-me.vue"
 import LinkList from "./components/link-list.vue"
-import FriendLinks from "./data/friend-links.json"
 import BlockList from "./components/block-list.vue"
+import FriendLinks from "./data/friend-links.json"
+import Contact from "./data/contact.json"
+import Service from "./data/service.json"
 
 export default{
 	name: 'App',
@@ -49,23 +51,13 @@ export default{
 				{
 					id:"1", name:"My service", component:"link-list", icon:"widgets",
 					data:{
-						//name theContent img_src url 
-						links:[
-							{"url":"https://drive.zsq001.cn:12344/", theContent:"My cloud storage space", "title":"My Drive", img_src:"cloud_download"},
-							{"url":"https://www.zsq001.cn:12344/", theContent:"gu gu and gu-ing", "title":"My blog", img_src:"developer_board"},
-							{"url":"https://img.zsq001.cn", theContent:"My img bed", "title":"My img bed", img_src:"photo"}
-						]
+						links:Service
 					}
 				},
 				{
 					id:"2", name:"Contact me", component:"link-list", icon:"call",
-					data:{ links:[//github qq email bili telegram gpg
-						{"url":"mailto:zsq1750819212@gmail.com", theContent:"zsq1750819212@gmail.com", title: "E-mail"},
-						{"url":"https://github.com/zsq001", theContent:"@zsq001", title: "My github"},
-						{"url":"https://t.me/zsq001", theContent:"@zsq001", title: "My telegram"},
-						{"url":"https://space.bilibili.com/381720186", theContent:"@灰狐zsq001", title: "My bili space"},
-						{"url":"https://github.com/zsq001.gpg", theContent:"9D26 2ED8 7064 97A4", title:"GunPG"}
-					]
+					data:{ 
+						links:Contact
 					}
 				},
 				{
