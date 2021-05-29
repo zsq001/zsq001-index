@@ -6,10 +6,10 @@ This is source code of zsq001-index.  It's still on developing!
 `yarn install`      
 
 ### Run 
-'yarn serve`
+`yarn serve`
 
 ### Build
-'yarn build`, the `dist` directory is the root directory.          
+`yarn build`, the `dist` directory is the root directory.          
 When building the project for the first time, add parameter `--fix`.
 
 ## Technical stack
