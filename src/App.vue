@@ -30,6 +30,7 @@
 import AboutMe from "./components/about-me.vue"
 import LinkList from "./components/link-list.vue"
 import BlockList from "./components/block-list.vue"
+import GroupPhoto from "./components/group-photo.vue"
 import FriendLinks from "./data/friend-links.json"
 import Contact from "./data/contact.json"
 import Service from "./data/service.json"
@@ -39,7 +40,8 @@ export default{
 	components:{
 		AboutMe,
 		LinkList,
-		BlockList
+		BlockList,
+		GroupPhoto
 	},
 	data: function(){
 		return {
@@ -65,6 +67,9 @@ export default{
 					data:{
 						links:FriendLinks
 					}
+				},
+				{
+					id:"4", name:"Group Photo", component:"group-photo", icon:"collections"
 				}
 			]
 		}
