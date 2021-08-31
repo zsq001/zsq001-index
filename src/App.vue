@@ -31,6 +31,7 @@ import AboutMe from "./components/about-me.vue"
 import LinkList from "./components/link-list.vue"
 import BlockList from "./components/block-list.vue"
 import GroupPhoto from "./components/group-photo.vue"
+import Beian from "./components/Beian.vue"
 import FriendLinks from "./data/friend-links.json"
 import Contact from "./data/contact.json"
 import Service from "./data/service.json"
@@ -41,7 +42,8 @@ export default{
 		AboutMe,
 		LinkList,
 		BlockList,
-		GroupPhoto
+		GroupPhoto,
+		Beian
 	},
 	data: function(){
 		return {
@@ -70,6 +72,9 @@ export default{
 				},
 				{
 					id:"4", name:"Group Photo", component:"group-photo", icon:"collections"
+				},
+				{
+					id:"5", name:"合规信息", component:"Beian", icon:"info"
 				}
 			]
 		}
