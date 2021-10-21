@@ -71,10 +71,7 @@ export default{
 					}
 				},
 				{
-					id:"4", name:"Group Photo", component:"group-photo", icon:"collections"
-				},
-				{
-					id:"5", name:"合规信息", component:"Beian", icon:"info"
+					id:"4", name:"合规信息", component:"Beian", icon:"info"
 				}
 			]
 		}
