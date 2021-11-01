@@ -2,7 +2,7 @@
 	<transition name="fade" appear>
 	<div class="mdui-container">
         <div class="mdui-row">
-			<div class="mdui-float-left" id="app">
+			<div class="mdui-float-left mdui-m-t-1" id="app">
 				<ul class="mdui-list">
 					<li class=" mdui-list-item mdui-ripple">
 						<div class="mdui-list-item-avatar"><img src="https://cos-furry-img.zsq001.cn/zsq001/5cbe91006081920.jpg"/></div>
@@ -12,8 +12,8 @@
 				</ul>
 			</div>
 	<main>
-        <div class="mdui-col-offset-md-2 mdui-col-offset-sm-">
-			<div class="mdui-card card mdui-center" id="app">
+        <div class="mdui-p-t-3">
+			<div class="mdui-card card mdui-center " id="app">
 				<transition name="fade" mode="out-in" appear>
 					<keep-alive>
 						<component :is="currentTabComponents" :key="current_tab" v-bind="currentTabLink"></component>

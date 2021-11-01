@@ -1,6 +1,6 @@
 <template>
 	<div class="mdui-typo">
-		<div class="mdui-center mdui-typo-title about-card">
+		<div class="mdui-center mdui-typo-title about-card mdui-m-t-3 mdui-m-b-3">
 			<p>大一鸽子</p>
 			<p>一只furry</p>
 			<p>各种意义上的萌新</p>
