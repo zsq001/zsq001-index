@@ -13,7 +13,7 @@
 			</div>
 	<main>
         <div class="mdui-p-t-3">
-			<div class="mdui-card card mdui-center " id="app">
+			<div class="mdui-card card mdui-center " >
 				<transition name="fade" mode="out-in" appear>
 					<keep-alive>
 						<component :is="currentTabComponents" :key="current_tab" v-bind="currentTabLink"></component>
