@@ -19,7 +19,7 @@
 						<component :is="currentTabComponents" :key="current_tab" v-bind="currentTabLink"></component>
 					</keep-alive>
 				</transition>
-        </div>
+			</div>
 		</div>
 	</main>
 	</div>
