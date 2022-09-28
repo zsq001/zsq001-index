@@ -26,11 +26,11 @@
 	</div>
 	</transition>
 </template>
+<script src=./dialog.js></script>
 <script>
 import AboutMe from "./components/about-me.vue"
 import LinkList from "./components/link-list.vue"
 import BlockList from "./components/block-list.vue"
-import GroupPhoto from "./components/group-photo.vue"
 import Beian from "./components/Beian.vue"
 import FriendLinks from "./data/friend-links.json"
 import Contact from "./data/contact.json"
@@ -42,7 +42,6 @@ export default{
 		AboutMe,
 		LinkList,
 		BlockList,
-		GroupPhoto,
 		Beian
 	},
 	data: function(){

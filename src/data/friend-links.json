@@ -55,7 +55,8 @@
 		"title":"钰元",
 		"imgr_src": "https://cos-furry-img.zsq001.cn/zsq001/724cf0407093324.jpg",
 		"theContent": "钰元聚聚！",
-		"url": "https://qm.qq.com/cgi-bin/qm/qr?k=yLx1bIHPxBdUT5QPAVA1zvhVRsGFKhFx&noverify=0#"
+		"qrcodePic":"https://cos-furry-img.zsq001.cn/zsq001/9b1370928120417.png ",
+		"isDialog": 1
 	},
 	{
 		"title":"正切",
