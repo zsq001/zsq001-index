@@ -32,9 +32,10 @@ import AboutMe from "./components/about-me.vue"
 import LinkList from "./components/link-list.vue"
 import BlockList from "./components/block-list.vue"
 import Beian from "./components/Beian.vue"
-import FriendLinks from "./data/friend-links.json"
-import Contact from "./data/contact.json"
-import Service from "./data/service.json"
+import axios from "axios";
+/*import FriendLinks from "http://127.0.0.1:5000/v1/friendlink/"
+import Contact from "http://127.0.0.1:5000/v1/contact/"
+import Service from "http://127.0.0.1:5000/v1/service/"*/
 
 export default{
 	name: 'App',
@@ -54,19 +55,19 @@ export default{
 				{
 					id:"1", name:"My service", component:"link-list", icon:"widgets",
 					data:{
-						links:Service
+						links:[]
 					}
 				},
 				{
 					id:"2", name:"Contact me", component:"link-list", icon:"call",
 					data:{ 
-						links:Contact
+						links:[]
 					}
 				},
 				{
 					id:"3", name:"Friend Link", component:"link-list", icon:"insert_link",
 					data:{
-						links:FriendLinks
+						links:[]
 					}
 				},
 				{
@@ -75,13 +76,21 @@ export default{
 			]
 		}
 	},
-	methods: {
+  mounted() {
+    axios.get('https://api.zsq001.cn/index/v1/service/')
+      .then(response => (this.lists[1].data.links = response.data))
+    axios.get('https://api.zsq001.cn/index/v1/contact/')
+      .then(response => (this.lists[2].data.links = response.data))
+    axios.get('https://api.zsq001.cn/index/v1/friendlink/')
+      .then(response => (this.lists[3].data.links = response.data))
+  },
+  methods: {
 		changeTab(id){
 			this.current_tab = id;
 		},
 		checkCurrentTab(id){
 			return this.current_tab == id;
-		}	
+		}
 	},
 	computed: {
 		currentTabLink: function(){

@@ -7,7 +7,9 @@
 	},
 	{
 		"title":"以下内容按照字典序排序，欢迎来找我添加友链呀~",
-		"theContent":"若qq链接无法跳转，请尝试复制链接到qq中访问"
+		"theContent":"若qq链接无法跳转，请尝试复制链接到qq中访问",
+		"isDialog": false,
+		"qrcodePic": null
 	},
 	{
 		"title":"鬼饕",
