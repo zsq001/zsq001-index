@@ -1,11 +1,9 @@
 <template>
 	<div class="mdui-typo">
 		<div class="mdui-center mdui-typo-title about-card mdui-m-t-3 mdui-m-b-3">
-			<p>大二鸽子</p>
+			<p>大三鸽子 / BYR-Team</p>
 			<p>一只furry</p>
 			<p>各种意义上的萌新</p>
-			<p>喜欢mc等沙盒游戏</p>
-			<p>不太喜欢每句话带个emoji</p>
 			<p>欢迎各位来扩列&gt;w&lt;</p>
 		</div>
 	</div>
