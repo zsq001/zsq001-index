@@ -12,8 +12,7 @@ This is source code of zsq001-index. ver 2.0
 `pnpm run build`, the `dist` directory is the root directory.          
 
 ## Technical stack
-- Vue.js + mdui
+- Vue.js
 
 ## License
 Apache 2.0
-<!-- 2021211273 -->
