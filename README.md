@@ -1,21 +1,19 @@
 # zsq001-index
-This is source code of zsq001-index.  It's still on developing!
+This is source code of zsq001-index. ver 2.0
 
 ## Setup
 ### Install the dependencies
-`yarn install`      
+`pnpm install`
 
-### Run 
-`yarn serve`
+### Run
+`pnpm run dev`
 
 ### Build
-`yarn build`, the `dist` directory is the root directory.          
-When building the project for the first time, add parameter `--fix`.
+`pnpm run build`, the `dist` directory is the root directory.          
 
 ## Technical stack
 - Vue.js + mdui
 
-## License 
+## License
 Apache 2.0
 <!-- 2021211273 -->
-

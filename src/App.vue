@@ -1,112 +1,104 @@
 <template>
-	<transition name="fade" appear>
-	<div class="mdui-container">
-        <div class="mdui-row">
-			<div class="mdui-float-left mdui-m-t-1" id="app">
-				<ul class="mdui-list">
-					<li class=" mdui-list-item mdui-ripple">
-						<div class="mdui-list-item-avatar"><img src="https://cos-furry-img.zsq001.cn/zsq001/5cbe91006081920.jpg"/></div>
-						<div class="mdui-list-item-content">zsq001</div>
-					</li>
-					<block-list v-for="list in lists" :key="list.id" :text="list.name" :chosen="checkCurrentTab(list.id)" :icon="list.icon" @click="changeTab(list.id)"></block-list>
-				</ul>
-			</div>
-	<main>
-        <div class="mdui-p-t-3">
-			<div class="mdui-card card mdui-center " >
-				<transition name="fade" mode="out-in" appear>
-					<keep-alive>
-						<component :is="currentTabComponents" :key="current_tab" v-bind="currentTabLink"></component>
-					</keep-alive>
-				</transition>
-			</div>
-		</div>
-	</main>
-	</div>
-	</div>
-	</transition>
-</template>
-<script src=./dialog.js></script>
-<script>
-import AboutMe from "./components/about-me.vue"
-import LinkList from "./components/link-list.vue"
-import BlockList from "./components/block-list.vue"
-import Beian from "./components/Beian.vue"
-import axios from "axios";
-/*import FriendLinks from "http://127.0.0.1:5000/v1/friendlink/"
-import Contact from "http://127.0.0.1:5000/v1/contact/"
-import Service from "http://127.0.0.1:5000/v1/service/"*/
+  <div class="min-h-screen bg-cover bg-center" :style="{ backgroundImage: `url(${backgroundImage})` }">
+    <div class="absolute inset-0 bg-black opacity-50"></div>
+    <div class="relative z-10 container mx-auto px-4 py-8">
+      <header class=" mb-8 text-center">
+        <img :src="avatar" alt="头像" class="w-32 h-32 rounded-full mx-auto mb-4 border-4 border-white shadow-lg">
+        <h1 class="text-4xl font-bold text-white shadow-text">{{ nickname }}</h1>
+      </header>
 
-export default{
-	name: 'App',
-	components:{
-		AboutMe,
-		LinkList,
-		BlockList,
-		Beian
-	},
-	data: function(){
-		return {
-			current_tab: "0",
-			lists: [
-				{
-					id:"0", name:"About me", component:"AboutMe", icon:"account_circle",
-				},
-				{
-					id:"1", name:"My service", component:"link-list", icon:"widgets",
-					data:{
-						links:[]
-					}
-				},
-				{
-					id:"2", name:"Contact me", component:"link-list", icon:"call",
-					data:{ 
-						links:[]
-					}
-				},
-				{
-					id:"3", name:"Friend Link", component:"link-list", icon:"insert_link",
-					data:{
-						links:[]
-					}
-				},
-				{
-					id:"4", name:"合规信息", component:"Beian", icon:"info"
-				}
-			]
-		}
-	},
-  mounted() {
-    axios.get('https://api.zsq001.cn/index/v1/service/')
-      .then(response => (this.lists[1].data.links = response.data))
-    axios.get('https://api.zsq001.cn/index/v1/contact/')
-      .then(response => (this.lists[2].data.links = response.data))
-    axios.get('https://api.zsq001.cn/index/v1/friendlink/')
-      .then(response => (this.lists[3].data.links = response.data))
+      <nav class="mb-8">
+        <ul class="flex justify-center space-x-4">
+          <li>
+            <button @click="currentPage = 'bio'"
+                    :class="['px-4 py-2 rounded-lg transition', currentPage === 'bio' ? 'bg-blue-500 text-white' : 'bg-white text-blue-500 hover:bg-blue-100']">
+              个人简介
+            </button>
+          </li>
+          <li>
+            <button @click="currentPage = 'friends'"
+                    :class="['px-4 py-2 rounded-lg transition', currentPage === 'friends' ? 'bg-blue-500 text-white' : 'bg-white text-blue-500 hover:bg-blue-100']">
+              友情链接
+            </button>
+          </li>
+        </ul>
+      </nav>
+
+      <main class="bg-white bg-opacity-75 rounded-lg shadow-lg p-6">
+        <transition name="fade" mode="out-in">
+          <section v-if="currentPage === 'bio'" key="bio">
+            <h2 class="text-2xl font-semibold mb-4">个人简介</h2>
+            <p class="text-gray-700 bio-text" v-html="bio"></p>
+          </section>
+
+          <section v-else-if="currentPage === 'friends'" key="friends">
+            <h2 class="text-2xl font-semibold mb-4">友情链接（顺序不分先后）</h2>
+            <ul class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <li v-for="friend in friends" :key="friend.id"
+                  class="bg-gray-100 rounded-lg p-4 hover:shadow-md transition flex flex-col items-start">
+                <a :href="friend.url" class="flex flex-col items-start p-4 h-full w-full block rounded-lg" target="_blank">
+                  <div class="flex items-center">
+                    <img :src="friend.avatarUrl" alt="友链头像" class="w-12 h-12 rounded-full mr-4">
+                    <div><p>{{ friend.name }}</p>
+                      <p class="text-gray-500 text-sm mt-1">{{ friend.description }}</p>
+                    </div>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </section>
+        </transition>
+      </main>
+
+      <footer class="mt-8 text-center text-white text-sm">
+        <p>ICP备案号：<a href="https://beian.miit.gov.cn/">京ICP备2021027219-1号</a> <br> 萌备案号（非正式）：<a
+            href="https://icp.gov.moe/?keyword=20210822">萌ICP备20210822号</a></p>
+      </footer>
+    </div>
+  </div>
+</template>
+
+<script>
+import friendsData from './friends.json';
+export default {
+  data() {
+    return {
+      backgroundImage: 'https://cos-furry-img.zsq001.cn/zsq001/pic-3.jpg',
+      avatar: 'https://cos-furry-img.zsq001.cn/zsq001/5cbe91006081920.jpg',
+      nickname: '灰狐GrayFox',
+      bio: '大四鸽子 / BYR-Team <br>' +
+          '一只furry <br>' +
+          '各种意义上的萌新 <br>' +
+          '欢迎各位来扩列>w<',
+      friends: friendsData,
+      currentPage: 'bio'
+    };
   },
-  methods: {
-		changeTab(id){
-			this.current_tab = id;
-		},
-		checkCurrentTab(id){
-			return this.current_tab == id;
-		}
-	},
-	computed: {
-		currentTabLink: function(){
-			return this.lists[this.current_tab].data;
-		},
-		currentTabComponents: function(){
-			return this.lists[this.current_tab].component;
-		}
-	}
-}
+};
 </script>
-<style scoped>
-.lleft
-{
-	padding: 15px;
-	width: 100%;
-	top: 2vh;
+
+<style>
+.shadow-text {
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.bio-text {
+  line-height: 2.6; /* 调整此处的数值以改变行间距 */
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.items-start {
+  align-items: flex-start;
+}
+
+.mr-4 {
+  margin-right: 1rem;
 }
 </style>
