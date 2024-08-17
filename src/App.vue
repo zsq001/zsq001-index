@@ -1,5 +1,5 @@
 <template>
-  <div class="min-h-screen bg-cover bg-center" :style="{ backgroundImage: `url(${backgroundImage})` }">
+  <div class="relative min-h-screen bg-cover bg-center bg-fixed" :style="{ backgroundImage: `url(${backgroundImage})` }">
     <div class="absolute inset-0 bg-black opacity-50"></div>
     <div class="relative z-10 container mx-auto px-4 py-8">
       <header class=" mb-8 text-center">
@@ -11,20 +11,20 @@
         <ul class="flex justify-center space-x-4">
           <li>
             <button @click="currentPage = 'bio'"
-                    :class="['px-4 py-2 rounded-lg transition', currentPage === 'bio' ? 'bg-blue-500 text-white' : 'bg-white text-blue-500 hover:bg-blue-100']">
+                    :class="['px-4 py-2 rounded-lg transition', currentPage === 'bio' ? 'bg-blue-500 text-white' : 'bg-[rgba(255,255,255,0.8)] text-blue-500 hover:bg-[rgba(255,255,255,0.9)]']">
               个人简介
             </button>
           </li>
           <li>
             <button @click="currentPage = 'friends'"
-                    :class="['px-4 py-2 rounded-lg transition', currentPage === 'friends' ? 'bg-blue-500 text-white' : 'bg-white text-blue-500 hover:bg-blue-100']">
+                    :class="['px-4 py-2 rounded-lg transition', currentPage === 'friends' ? 'bg-blue-500 text-white' : 'bg-[rgba(255,255,255,0.8)] text-blue-500 hover:bg-[rgba(255,255,255,0.9)]']">
               友情链接
             </button>
           </li>
         </ul>
       </nav>
 
-      <main class="bg-white bg-opacity-75 rounded-lg shadow-lg p-6">
+      <main class="bg-white bg-opacity-75 rounded-lg shadow-lg p-6 max-w-6xl mx-auto">
         <transition name="fade" mode="out-in">
           <section v-if="currentPage === 'bio'" key="bio">
             <h2 class="text-2xl font-semibold mb-4">个人简介</h2>
@@ -50,8 +50,20 @@
         </transition>
       </main>
 
-      <footer class="mt-8 text-center text-white text-sm">
-        <p>ICP备案号：<a href="https://beian.miit.gov.cn/">京ICP备2021027219-1号</a> <br> 萌备案号（非正式）：<a
+      <footer class="mt-8 space-x-3 text-center text-white text-sm">
+        <a href="https://gfurl.cc/gh" target="_blank" class="text-white-400 hover:text-gray-300">
+          <i class="fab fa-github fa-2x"></i>
+        </a>
+        <a href="https://gfurl.cc/bili" target="_blank" class="text-white-400 hover:text-gray-300">
+          <i class="fab fa-bilibili fa-2x"></i>
+        </a>
+        <a href="https://gfurl.cc/x" target="_blank" class="text-white-400 hover:text-gray-300">
+          <i class="fab fa-twitter fa-2x"></i>
+        </a>
+        <a href="mailto:zsq001@zsq001.cn" class="text-white-400 hover:text-gray-300">
+          <i class="fas fa-envelope fa-2x"></i>
+        </a>
+        <p>ICP备案号：<a href="https://gfurl.cc/icp">京ICP备2021027219-1号</a> <br> 萌备案号（非正式）：<a
             href="https://icp.gov.moe/?keyword=20210822">萌ICP备20210822号</a></p>
       </footer>
     </div>
@@ -60,7 +72,27 @@
 
 <script>
 import friendsData from './friends.json';
+
 export default {
+  methods: {
+    async fetchFriendsData() {
+      try {
+        const response = await fetch('https://cdn.zsq001.cn/others/friends.json');
+
+        if (!response.ok) {
+          throw new Error('网络响应错误');
+        }
+
+        const friendsData = await response.json();
+        console.log(friendsData);
+      } catch (error) {
+        console.error('获取数据时出错:', error);
+      }
+    }
+  },
+  async mounted() {
+    await this.fetchFriendsData();
+  },
   data() {
     return {
       backgroundImage: 'https://cos-furry-img.zsq001.cn/zsq001/pic-3.jpg',
