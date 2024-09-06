@@ -67,11 +67,20 @@
             href="https://icp.gov.moe/?keyword=20210822">萌ICP备20210822号</a></p>
       </footer>
     </div>
+
+    <!-- User Card -->
+<!--    <div v-if="user" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">-->
+<!--      <div class="bg-white p-6 rounded-lg shadow-lg">-->
+<!--        <h2 class="text-2xl font-semibold mb-4">{{ user }}，欢迎！</h2>-->
+<!--        <button @click="user = null" class="mt-4 px-4 py-2 bg-blue-500 text-white rounded-lg">关闭</button>-->
+<!--      </div>-->
+<!--    </div>-->
   </div>
 </template>
 
 <script>
 import friendsData from './friends.json';
+import { ElNotification } from 'element-plus'
 
 export default {
   methods: {
@@ -80,18 +89,57 @@ export default {
         const response = await fetch('https://cdn.zsq001.cn/others/friends.json');
 
         if (!response.ok) {
-          throw new Error('网络响应错误');
+          ElNotification({
+            title: 'Error',
+            message: '网络请求失败',
+            type: 'error',
+          })
         }
 
         const friendsData = await response.json();
         console.log(friendsData);
       } catch (error) {
-        console.error('获取数据时出错:', error);
+        ElNotification({
+          title: 'Error',
+          message: '获取数据时出错:'+ error,
+          type: 'error',
+        })
+      }
+    },
+    async fetchUserData(u) {
+      try {
+        const response = await fetch(`https://ifa.zsq001.cn/query?u=${u}`);
+        if (!response.ok) {
+          ElNotification({
+            title: 'Error',
+            message: '网络请求失败',
+            type: 'error',
+          })
+        }
+        const data = await response.json();
+        this.user = data.user;
+        ElNotification({
+          title: '欢迎',
+          message: '欢迎 ' + this.user + ' !',
+          type: 'success',
+        })
+      } catch (error) {
+        ElNotification({
+          title: 'Error',
+          message: '获取数据时出错:'+ error,
+          type: 'error',
+        })
       }
     }
   },
   async mounted() {
     await this.fetchFriendsData();
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const u = urlParams.get('u');
+    if (u) {
+      await this.fetchUserData(u);
+    }
   },
   data() {
     return {
@@ -103,7 +151,8 @@ export default {
           '各种意义上的萌新 <br>' +
           '欢迎各位来扩列>w<',
       friends: friendsData,
-      currentPage: 'bio'
+      currentPage: 'bio',
+      user: null
     };
   },
 };

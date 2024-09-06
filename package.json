@@ -21,6 +21,7 @@
     "@fortawesome/vue-fontawesome": "^3.0.8",
     "@mdui/icons": "^1.0.2",
     "autoprefixer": "^10.4.19",
+    "element-plus": "^2.8.1",
     "mdui": "^2.1.1",
     "postcss": "^8.4.39",
     "tailwindcss": "^3.4.4",
