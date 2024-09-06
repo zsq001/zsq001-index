@@ -109,20 +109,29 @@ export default {
     async fetchUserData(u) {
       try {
         const response = await fetch(`https://ifa.zsq001.cn/query?u=${u}`);
-        if (!response.ok) {
+
+        if (response.status === 404) {
+          ElNotification({
+            title: 'Error',
+            message: '用户未找到',
+            type: 'error',
+          })
+        }else if (!response.ok) {
           ElNotification({
             title: 'Error',
             message: '网络请求失败',
             type: 'error',
           })
+        }else {
+          const data = await response.json();
+          this.user = data.user;
+          ElNotification({
+            title: '欢迎',
+            message: '欢迎 ' + this.user + ' !',
+            type: 'success',
+          })
         }
-        const data = await response.json();
-        this.user = data.user;
-        ElNotification({
-          title: '欢迎',
-          message: '欢迎 ' + this.user + ' !',
-          type: 'success',
-        })
+
       } catch (error) {
         ElNotification({
           title: 'Error',
