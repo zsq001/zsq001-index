@@ -79,9 +79,7 @@
 </template>
 
 <script>
-import friendsData from './friends.json';
 import { ElNotification } from 'element-plus'
-
 export default {
   methods: {
     async fetchFriendsData() {
@@ -96,8 +94,8 @@ export default {
           })
         }
 
-        const friendsData = await response.json();
-        console.log(friendsData);
+        this.friends = await response.json();
+        console.log(this.friends);
       } catch (error) {
         ElNotification({
           title: 'Error',
@@ -159,9 +157,9 @@ export default {
           '一只furry <br>' +
           '各种意义上的萌新 <br>' +
           '欢迎各位来扩列>w<',
-      friends: friendsData,
+      friends: null,
       currentPage: 'bio',
-      user: null
+      user: null,
     };
   },
 };
