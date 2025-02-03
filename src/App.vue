@@ -142,7 +142,7 @@ export default {
   },
   data() {
     return {
-      backgroundImage: 'https://cos-furry-img.zsq001.cn/zsq001/pic-3.jpg',
+      backgroundImage: Math.random() >= 0.5 ? 'https://cos-furry-img.zsq001.cn/zsq001/pic-3.jpg' : 'https://cos-furry-img.zsq001.cn/zsq001/202411290018752.jpg',
       avatar: 'https://cos-furry-img.zsq001.cn/zsq001/5cbe91006081920.jpg',
       nickname: '灰狐GrayFox',
       bio: '大四鸽子 / BYR-Team / Baidu R&D <br>' +
