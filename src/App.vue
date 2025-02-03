@@ -63,18 +63,10 @@
         <a href="mailto:zsq001@zsq001.cn" class="text-white-400 hover:text-gray-300">
           <i class="fas fa-envelope fa-2x"></i>
         </a>
-        <p>ICP备案号：<a href="https://gfurl.cc/icp">京ICP备2021027219-1号</a> <br> 萌备案号（非正式）：<a
-            href="https://icp.gov.moe/?keyword=20210822">萌ICP备20210822号</a></p>
+        <p v-if="isGlobal === false"><a href="https://gfurl.cc/icp">ICP备案号： 京ICP备2021027219-1号</a> <br> <a
+            href="https://icp.gov.moe/?keyword=20210822">萌备案号（非正式）： 萌ICP备20210822号</a></p>
       </footer>
     </div>
-
-    <!-- User Card -->
-<!--    <div v-if="user" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">-->
-<!--      <div class="bg-white p-6 rounded-lg shadow-lg">-->
-<!--        <h2 class="text-2xl font-semibold mb-4">{{ user }}，欢迎！</h2>-->
-<!--        <button @click="user = null" class="mt-4 px-4 py-2 bg-blue-500 text-white rounded-lg">关闭</button>-->
-<!--      </div>-->
-<!--    </div>-->
   </div>
 </template>
 
@@ -153,13 +145,14 @@ export default {
       backgroundImage: 'https://cos-furry-img.zsq001.cn/zsq001/pic-3.jpg',
       avatar: 'https://cos-furry-img.zsq001.cn/zsq001/5cbe91006081920.jpg',
       nickname: '灰狐GrayFox',
-      bio: '大四鸽子 / BYR-Team <br>' +
+      bio: '大四鸽子 / BYR-Team / Baidu R&D <br>' +
           '一只furry <br>' +
           '各种意义上的萌新 <br>' +
           '欢迎各位来扩列>w<',
       friends: null,
       currentPage: 'bio',
       user: null,
+      isGlobal: import.meta.env.VITE_ISGLOBAL == "true" ? true : false
     };
   },
 };
